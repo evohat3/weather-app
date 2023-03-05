@@ -12,7 +12,7 @@ setInterval(function() {
 $('#Btn').click(function() {
   currentDate = dayjs().format('MMMM D, YYYY');
   city = $('#cityInpt').val();
-  qUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apKey + '&units=imperial';    
+  qUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apKey + '&units=imperial';    
 
   $(city).set
   fetch(qUrl)
@@ -25,7 +25,7 @@ $('#Btn').click(function() {
     .then(data => {
       $('#ctyDte').text('CITY: ' + data.name);
       $('#temp').text(data.main.temp + ' °F');
-      $('#wicon').attr('src', 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
+      $('#wicon').attr('src', 'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
       $('#desc').text(data.weather[0].description + ' Feels like: ' + data.main.feels_like)
       $('#wind').text(data.wind.speed + ' MPH');
       $('#humidity').text(data.main.humidity + '%');
