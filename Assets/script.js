@@ -6,7 +6,7 @@ var maxCities = 5;
 
 // ********** TIME HEADER **********
 setInterval(function() {
-    $('#curTmDt').text('Today is ' + dayjs().format('MMMM D, YYYY h:mm:s A'));
+    $('#curTmDt').text(dayjs().format(' MMMM D, YYYY h:mm:ss A '));
 }, 1000);
 // ********** TIME HEADER **********
 

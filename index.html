@@ -87,7 +87,7 @@ TODO ****** 5 DAY FORECAST: ******
       <a class="navbar-brand text-warning" href="#"><h1>WEATHER DASHBOARD</h1></a>
       <div class="d-flex w-100">
         <div class="ml-auto">
-          <span id="curTmDt" class="text-light text-center ms-5"></span>
+          
         </div>
       </div>
     </div>
@@ -99,11 +99,17 @@ TODO ****** 5 DAY FORECAST: ******
       <!-- Search box -->
       <div class="col-lg-4 bg-dark">
         <div class="card border-dark border border-dark border-3 m-3 p-1 text-center">
-          <div class="card-header bg-primary text-white text-center border border-5 border-dark mb-1">SEARCH FOR A CITY:</div>
+          <div class="card-header bg-black text-success text-center border border-5 border-dark mb-1">
+            
+            <h1 class="">
+              <span id="curTmDt" class="text-success ms-5"></span>
+            </h1>
+
+          </div>
           <div class="card-body bg-primary ">
             <form class="">
               <div class="input-group">
-                <input id="cityInpt" class="form-control border border-dark border-3 p-3 m-1" type="text" placeholder="Search City">
+                <input id="cityInpt" class="form-control border border-dark border-3 p-3 m-1 " type="text" placeholder="Search For A City">
                   <div class="container">
                     <button id="Btn" type="button" class="btn btn-primary m-1 p-1 w-75 border border-3 border-dark">Search</button>
                   </div>
@@ -116,12 +122,12 @@ TODO ****** 5 DAY FORECAST: ******
         <div class="card bg-dark mt-3">
           
           <div>
-              <div class="card border border-light border-5 m-2 bg-primary">
+              <div class="card border border-light border-5 m-2 bg-black">
                 <div class="card-header bg-danger border border-4 border-dark m-2">
               </div>
               
-              <h1 class="text-light text-center border-left">
-                <div class="border border-dark border-5 ms-3 me-3 bg-primary">Last 5 Cities</div>
+              <h1 class="text-black text-center border-left">
+                <div class="border border-white border-5 ms-3 me-3 bg-danger">Last 5 Cities</div>
                   
                   <div id="ctyHist" class="d-grid gap-1"></div>
               
@@ -129,7 +135,7 @@ TODO ****** 5 DAY FORECAST: ******
               <div class="card-footer bg-danger border border-4 border-dark m-2"></div>
             </div>
             <div class="card bg-dark text-white mb-1 mt-3">
-              <button id="clearBtn" class=" card-content btn btn-primary border border-light border-3 mt-3 mb-3 ms-1 me-1">Clear History</button>
+              <button id="clearBtn" class=" card-content btn bg-black border border-light border-3 mb-5 ms-5 me-5"><h3 class="text-danger mt-2">Clear History</h3></button>
             </div>
 
           </div>  
