@@ -98,25 +98,38 @@ TODO ****** 5 DAY FORECAST: ******
       <div class="col-lg-4 bg-secondary">
         <div class="card border-primary border border-dark">
           <div class="card-header bg-primary text-white">SEARCH FOR A CITY:</div>
-          <div class="card-body bg-primary">
-            <form class="border border-5 border-secondary">
-              <div class="input-group border border-dark border-3">
-                <input id="cityInpt" class="form-control" type="text" placeholder="Search City">
-                <button id="Btn" type="button" class="btn btn-primary border border-dark border-5">Search</button>
+          <div class="card-body bg-primary ">
+            <form class="g-3">
+              <div class="input-group">
+                <input id="cityInpt" class="form-control border border-dark border-3" type="text" placeholder="Search City">
+                  <div class="container">
+                    <button id="Btn" type="button" class="btn btn-primary m-3 border border-3 border-dark">Search</button>
+                  </div>
+              
               </div>
             </form>
           </div>
         </div>
         <!-- Searched cities -->
         <div class="card bg-dark mt-3 border border-dark border-4">
-          <div class="card-header bg-dark text-white mb-1"><h1>SEARCHED CITIES</h1></div>
+          
+          <div>
+            <div class="card-header bg-dark text-white mb-1">
+              <h1>SEARCHED CITIES</h1>
+            </div>
+            <div class="card bg-dark text-white mb-1">
+              <button id="clearBtn" class=" card-content btn btn-primary border border-light border-1">Clear History</button>
+            </div>
+
+          </div>  
+          
           <div id="ctyHist" class="d-grid gap-2 bg-dark"></div>
         </div>
       </div>
       <!-- Current city -->
       <div class="col-lg-8">
         <div id="cityBox" class="card border border-1 border-dark">
-          <div class="card-header bg-success border border-dark border-4">
+          <div id="cityText" class="card-header bg-success border border-dark border-4">
             <h2 id="ctyDte" class="">CITY: </h2>
           </div>
           <div class="card-body row border border-dark border-5 bg-primary">
@@ -125,13 +138,15 @@ TODO ****** 5 DAY FORECAST: ******
               <h3>Wind: <span id="wind"></span></h3>
               <h3>Humidity: <span id="humidity"></span></h3>
             </div>
-            <div class="card col-sm-3 border border-3 border-dark bg-light text-dark">
-              <img id="wicon" src="" alt="Weather icon" class="card-title">
-              <p id="desc" class="card-body"></p>
+            <div id="currentTCard" class="card col-sm-3 border border-3 border-dark bg-light text-light">
+                <div class="card-header bg-secondary">
+                  <img id="wicon" src="" alt="Weather icon" class=" bg-light">
+                </div>
+                <p id="desc" class="card-body text-center bg-secondary  border border-3 border-dark"></p>
             </div>
           </div>
           <!-- Five day forecast -->
-          <div class="card-header bg-primary border border-dark border-4">
+          <div id="fiveDaFor" class="card-header bg-primary border border-dark border-4">
             <h2>5-Day Forecast:</h2>
             <div id="forecast" class="row cols-5 g-3 card-body">
 

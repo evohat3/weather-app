@@ -2,7 +2,7 @@ var apKey = '5a62f4bb8b9b5dc5803e1dc31e408686'
 var city = ''
 var qUrl = ''
 var counter = 0;
-var maxCities = 5;
+var maxCities = 10;
 
 // ********** TIME HEADER **********
 setInterval(function() {
@@ -29,13 +29,18 @@ $('#Btn').click(function() {
 
       localStorage.setItem(key, data.name);
       // ******************************************
-      $('#ctyDte').text('CITY: ' + data.name);
+      $('#ctyDte').text(data.name);
       $('#temp').text(data.main.temp + ' °F');
       $('#wicon').attr('src', 'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
       $('#desc').text(data.weather[0].description + ' Feels like: ' + data.main.feels_like)
       $('#wind').text(data.wind.speed + ' MPH');
       $('#humidity').text(data.main.humidity + '%');
-
+      //*** shows weather card info ***
+      $('#currentTCard').show();
+      $('#fiveDaFor').show();
+      $('#cityText').show();
+      //*** shows weather card info ***
+      
       // **** API TEST ****
       console.log(data);
       // **** API TEST ****
@@ -49,7 +54,7 @@ $('#Btn').click(function() {
  // Gets all the keys in local storage and sorts them by their var = counter value
 $(document).ready(function() {
   var keys = Object.keys(localStorage);
-    keys.sort(function(a, b) {
+  keys.sort(function(a, b) {
       return a.split('_')[1] - b.split('_')[1];
     });
   // Gets all the keys in local storage and sorts them by their var = counter value 
@@ -97,3 +102,10 @@ function isCityAlreadyStored(cityName) {
   }
   return false;
 }
+
+
+
+$('#clearBtn').click(function() {
+  localStorage.clear();
+  location.reload();
+});

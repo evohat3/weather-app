@@ -7,3 +7,16 @@
     margin: auto;
     border-radius: 5%;
 }
+
+
+#currentTCard {
+  display: none;
+}
+
+#fiveDaFor {
+  display: none;
+}
+
+#cityText {
+  display: none;
+}
