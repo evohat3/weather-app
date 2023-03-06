@@ -14,7 +14,6 @@ $('#Btn').click(function() {
   city = $('#cityInpt').val();
   qUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apKey + '&units=imperial';    
 
-  $(city).set
   fetch(qUrl)
     .then(response => {
         if(response.ok) {
@@ -30,12 +29,16 @@ $('#Btn').click(function() {
       $('#wind').text(data.wind.speed + ' MPH');
       $('#humidity').text(data.main.humidity + '%');
 // can this be saved in local storage and then retrieved?
+/*
       var button = $('<button>').attr('type', 'button')
                                  .addClass('btn btn-info border border-warning border-2')
                                  .text(data.name)
                                  .attr('data-city', data.name);
       $('#ctyHist').append(button);
-      localStorage.setItem('city', data.name);
+
+*/
+
+      localStorage.setItem('index', data.name);
       console.log(data);
     })
     .catch(error => {
@@ -43,3 +46,31 @@ $('#Btn').click(function() {
       alert('There was a problem retrieving the weather data. Please try again later.');
     });
 });
+
+
+$(document).ready(function() {
+  // Get all the keys in local storage
+  var keys = Object.keys(localStorage);
+  
+  // Loop through the keys and create a button for each city
+  $.each(keys, function(index, key) {
+    var button = $('<button>').attr('type', 'button')
+                               .addClass('btn btn-info border border-warning border-2')
+                               .text(localStorage.getItem(key))
+                               .attr('data-city', key);
+    $('#ctyHist').append(button);
+  });
+});
+
+/*
+$(document).ready(function() {
+  var data = localStorage.getItem(data.name)
+  if (data) {
+    var parsedData = JSON.parse(data)
+
+    console.log(parsedData)
+  }
+
+})
+
+*/
