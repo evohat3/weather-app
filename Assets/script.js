@@ -6,7 +6,7 @@ var maxCities = 5;
 
 // ********** TIME HEADER **********
 setInterval(function() {
-    $('#curTmDt').text(dayjs().format(' MMMM D, YYYY h:mm A '));
+    $('#curTmDt').text(dayjs().format(' MMMM D, YYYY h:mm:s A '));
 }, 1000);
 // ********** TIME HEADER **********
 
@@ -24,9 +24,8 @@ $('#Btn').click(function() {
         throw new Error('Network response was not ok');
     })
     .then(data => {
-      //saves the city in local, with a unique key
+      //saves the city in local storage, with a unique key
       var key = 'city_' + counter++;
-
       localStorage.setItem(key, data.name);
       // ******************************************
       $('#ctyDte').text('CITY: ' + '' + data.name);
@@ -44,7 +43,7 @@ $('#Btn').click(function() {
       //*** shows weather card info ***
 
       
-      // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+      // qUrl2 = api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
       
       // **** API TEST ****
       console.log(data);
@@ -85,18 +84,7 @@ $(document).ready(function() {
   });
 });
 
-/*
-$(document).ready(function() {
-  var data = localStorage.getItem(data.name)
-  if (data) {
-    var parsedData = JSON.parse(data)
 
-    console.log(parsedData)
-  }
-
-})
-
-*/
 
 function isCityAlreadyStored(cityName) {
   var keys = Object.keys(localStorage);
@@ -108,8 +96,6 @@ function isCityAlreadyStored(cityName) {
   }
   return false;
 }
-
-
 
 $('#clearBtn').click(function() {
   localStorage.clear();
