@@ -77,7 +77,7 @@ $(document).ready(function() {
   $.each(keys, function(index, key) {
     var city = localStorage.getItem(key)
     var button = $('<button>').attr('type', 'button')
-                               .addClass('btn btn-success border border-dark border-5 m-3 text-light')
+                               .addClass('btn btn-success border border-danger border-5 m-3')
                                .text(city)
                                .attr('data-city', city)
                                .attr('id', 'aBTN' )

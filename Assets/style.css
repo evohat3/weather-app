@@ -44,13 +44,21 @@
 }
 
 #aBTN:hover {
-  background-color: red;
+  background-color: yellow;
+  color: black;
 }
 
 #Btn:hover {
-  background-color: red;
+  background-color: green;
+ 
 }
 
 #clearBtn:hover {
-  background-color: green;
+  background-color: red;
+  color: black;
+}
+
+#laFiveC:hover {
+  background-color: yellow;
+  color: black;
 }
