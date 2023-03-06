@@ -40,6 +40,7 @@ $('#Btn').click(function() {
       $('#fiveDaFor').show();
       $('#cityText').show();
       $('#curWeatherBx').show();
+      $('#cityBox').show();
       //*** shows weather card info ***
 
       
@@ -76,7 +77,7 @@ $(document).ready(function() {
   $.each(keys, function(index, key) {
     var city = localStorage.getItem(key)
     var button = $('<button>').attr('type', 'button')
-                               .addClass('btn btn-info border border-warning border-2 m-3')
+                               .addClass('btn btn-info border border-dark border-5 m-3')
                                .text(city)
                                .attr('data-city', city);
     $('#ctyHist').append(button);

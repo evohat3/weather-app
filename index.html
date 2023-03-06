@@ -96,14 +96,14 @@ TODO ****** 5 DAY FORECAST: ******
     <div class="row">
       <!-- Search box -->
       <div class="col-lg-4 bg-dark">
-        <div class="card border-primary border border-light border-3">
-          <div class="card-header bg-primary text-white text-center">SEARCH FOR A CITY:</div>
+        <div class="card border-dark border border-dark border-3 m-3 p-1 text-center">
+          <div class="card-header bg-primary text-white text-center border border-5 border-dark mb-1">SEARCH FOR A CITY:</div>
           <div class="card-body bg-primary ">
-            <form class="g-3">
+            <form class="">
               <div class="input-group">
-                <input id="cityInpt" class="form-control border border-dark border-3" type="text" placeholder="Search City">
+                <input id="cityInpt" class="form-control border border-dark border-3 p-3 m-1" type="text" placeholder="Search City">
                   <div class="container">
-                    <button id="Btn" type="button" class="btn btn-primary m-3 border border-3 border-dark">Search</button>
+                    <button id="Btn" type="button" class="btn btn-primary m-1 p-1 w-75 border border-3 border-dark">Search</button>
                   </div>
               
               </div>
@@ -111,10 +111,10 @@ TODO ****** 5 DAY FORECAST: ******
           </div>
         </div>
         <!-- Searched cities -->
-        <div class="card bg-dark mt-3 border border-success border-4">
+        <div class="card bg-dark mt-3">
           
           <div>
-              <div class="card border border-success border-5 m-2 bg-danger">
+              <div class="card border border-light border-5 m-2 bg-danger">
                 <div class="card-header bg-success border border-4 border-dark m-2">
               </div>
               
@@ -127,7 +127,7 @@ TODO ****** 5 DAY FORECAST: ******
               <div class="card-footer bg-success border border-4 border-dark m-2"></div>
             </div>
             <div class="card bg-dark text-white mb-1 mt-3">
-              <button id="clearBtn" class=" card-content btn btn-primary border border-success border-3 mt-3 mb-3 ms-1 me-1">Clear History</button>
+              <button id="clearBtn" class=" card-content btn btn-primary border border-light border-3 mt-3 mb-3 ms-1 me-1">Clear History</button>
             </div>
 
           </div>  
@@ -137,23 +137,26 @@ TODO ****** 5 DAY FORECAST: ******
       </div>
       <!-- Current city -->
       <div class="col-lg-8">
-        <div id="cityBox" class="card border border-1 border-dark">
-          <div id="cityText" class="card-header bg-success border border-dark border-4">
+        <div id="cityBox" class="card border border-1 border-dark p-1 bg-dark">
+          <div id="cityText" class="card-header bg-success border border-light border-4 mb-2">
             <h2 id="ctyDte" class="">CITY: </h2>
           </div>
           
-          <div id="curWeatherBx" class="card-header bg-primary border border-light border-5 bg-primary">
+          <div id="curWeatherBx" class="card-header bg-primary border border-light border-5 bg-primary p-3 mb-2">
             <div class="card-body row">
-              <div class="col-lg-5">
+              <div class="col-lg-5 text-light">
                 <h3>Temperature: <span id="temp"></span></h3>
                 <h3>Wind: <span id="wind"></span></h3>
                 <h3>Humidity: <span id="humidity"></span></h3>
               </div>
-            <div id="currentTCard" class="card col-sm-3 border border-3 border-dark bg-light text-light">
-                <div class="card-header bg-secondary">
-                  <img id="wicon" src="" alt="Weather icon" class=" bg-light">
+            <div id="currentTCard" class="card bg-primary text-light  w-50 h-100">
+                <div class="card bg-secondary mt-3 mb-2">
+                  <img id="wicon" src="" alt="Weather icon" class=" bg-light border border-dark border-5">
                 </div>
-                <p id="desc" class="card-body text-center bg-secondary  border border-3 border-dark"></p>
+                <h3>
+                  <p id="desc" class="card-body text-center bg-success border-top border-bottom border-5 border-dark"></p>
+                </h3>
+
               </div>
             </div>
           </div>  

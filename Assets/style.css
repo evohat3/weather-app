@@ -24,3 +24,7 @@
 #curWeatherBx {
   display: none;
 }
+
+#cityBox {
+  display: none;
+}
