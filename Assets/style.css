@@ -1,7 +1,12 @@
 * {
   font-family: 'Shantell Sans', cursive;
+
 }
 
+
+#cards {
+  border-radius: 10%;
+}
 
 
 #cityInpt {

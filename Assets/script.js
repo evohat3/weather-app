@@ -29,7 +29,7 @@ $('#Btn').click(function() {
 
       localStorage.setItem(key, data.name);
       // ******************************************
-      $('#ctyDte').text(data.name);
+      $('#ctyDte').text('CITY: ' + '' + data.name);
       $('#temp').text(data.main.temp + ' °F');
       $('#wicon').attr('src', 'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
       $('#desc').text(data.weather[0].description + ' Feels like: ' + data.main.feels_like)
@@ -77,7 +77,7 @@ $(document).ready(function() {
   $.each(keys, function(index, key) {
     var city = localStorage.getItem(key)
     var button = $('<button>').attr('type', 'button')
-                               .addClass('btn btn-info border border-dark border-5 m-3')
+                               .addClass('btn btn-success border border-dark border-5 m-3 text-light')
                                .text(city)
                                .attr('data-city', city);
     $('#ctyHist').append(button);

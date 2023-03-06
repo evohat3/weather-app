@@ -80,14 +80,14 @@ TODO ****** 5 DAY FORECAST: ******
 
 
 
-<body class="bg-dark">
+<body class="bg-black">
     
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom border-danger border-5">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">WEATHER DASHBOARD</a>
+      <a class="navbar-brand text-warning" href="#"><h1>WEATHER DASHBOARD</h1></a>
       <div class="d-flex w-100">
         <div class="ml-auto">
-          <span id="curTmDt" class="text-white"></span>
+          <span id="curTmDt" class="text-light text-center ms-5"></span>
         </div>
       </div>
     </div>
@@ -116,8 +116,8 @@ TODO ****** 5 DAY FORECAST: ******
         <div class="card bg-dark mt-3">
           
           <div>
-              <div class="card border border-light border-5 m-2 bg-danger">
-                <div class="card-header bg-success border border-4 border-dark m-2">
+              <div class="card border border-light border-5 m-2 bg-primary">
+                <div class="card-header bg-danger border border-4 border-dark m-2">
               </div>
               
               <h1 class="text-light text-center border-left">
@@ -126,7 +126,7 @@ TODO ****** 5 DAY FORECAST: ******
                   <div id="ctyHist" class="d-grid gap-1"></div>
               
               </h1>
-              <div class="card-footer bg-success border border-4 border-dark m-2"></div>
+              <div class="card-footer bg-danger border border-4 border-dark m-2"></div>
             </div>
             <div class="card bg-dark text-white mb-1 mt-3">
               <button id="clearBtn" class=" card-content btn btn-primary border border-light border-3 mt-3 mb-3 ms-1 me-1">Clear History</button>
@@ -138,10 +138,10 @@ TODO ****** 5 DAY FORECAST: ******
         </div>
       </div>
       <!-- Current city -->
-      <div class="col-lg-8">
+      <div id="cityLabel" class="col-lg-8">
         <div id="cityBox" class="card border border-1 border-dark p-1 bg-dark">
           <div id="cityText" class="card-header bg-success border border-light border-4 mb-2">
-            <h2 id="ctyDte" class="">CITY: </h2>
+            <h2 id="ctyDte" class="text-center text-white"> </h2>
           </div>
           
           <div id="curWeatherBx" class="card-header bg-primary border border-light border-5 bg-primary p-3 mb-2">
@@ -151,7 +151,7 @@ TODO ****** 5 DAY FORECAST: ******
                 <h3>Wind: <span id="wind"></span></h3>
                 <h3>Humidity: <span id="humidity"></span></h3>
               </div>
-            <div id="currentTCard" class="card border border-3 border-dark bg-primary text-light  w-50 h-100">
+            <div id="currentTCard" class="bg-primary text-light  w-50 h-100">
                 <div class="card bg-secondary mt-3 mb-2">
                   <img id="wicon" src="" alt="Weather icon" class=" bg-light border border-dark border-5">
                 </div>
@@ -165,11 +165,11 @@ TODO ****** 5 DAY FORECAST: ******
 
 
           <!-- Five day forecast -->
-          <div id="fiveDaFor" class="card-header bg-primary border border-dark border-4 w-100">
-            <h2>5-Day Forecast:</h2>
+          <div id="fiveDaFor" class="card-header bg-primary border border-light border-4 w-100">
+            <h2 class="text-white text-center">5-Day Forecast:</h2>
             <div id="forecast" class="row cols-5 g-3 card-body ">
 
-              <div id="card1" class="card bg-light w-auto p-3 me-3 border border-dark border-5">
+              <div id="cards" class="card bg-light w-auto p-3 me-3 border border-dark border-5">
                 <div class="card-header border-bottom border-dark border-3">
                   <h1>Date</h1>
                   <img class="">*</img>
@@ -181,20 +181,7 @@ TODO ****** 5 DAY FORECAST: ******
                 </div>
               </div>
 
-              <div id="card1" class="card bg-light w-auto p-3 me-3 border border-dark border-5">
-                <div class="card-header border-bottom border-dark border-3">
-                  <h1>Date</h1>
-                  <img class="">*</img>
-                </div>
-                  <div class="card-title">
-                    <img class="">*</img>
-                    <div class="">Temp: 63.55</div>
-                    <div>wind: 5 MPH</div>
-                    <div>Humidity 20%</div>
-                </div>
-              </div>
-
-              <div id="card1" class="card bg-light w-auto p-3 me-3 border border-dark border-5">
+              <div id="cards" class="card bg-light w-auto p-3 me-3 border border-dark border-5">
                 <div class="card-header border-bottom border-dark border-3">
                   <h1>Date</h1>
                   <img class="">*</img>
@@ -207,7 +194,7 @@ TODO ****** 5 DAY FORECAST: ******
                 </div>
               </div>
 
-              <div id="card1" class="card bg-light w-auto p-3 me-3 border border-dark border-5">
+              <div id="cards" class="card bg-light w-auto p-3 me-3 border border-dark border-5">
                 <div class="card-header border-bottom border-dark border-3">
                   <h1>Date</h1>
                   <img class="">*</img>
@@ -220,7 +207,20 @@ TODO ****** 5 DAY FORECAST: ******
                 </div>
               </div>
 
-              <div id="card1" class="card bg-light w-auto p-3 me-3 border border-dark border-5">
+              <div id="cards" class="card bg-light w-auto p-3 me-3 border border-dark border-5">
+                <div class="card-header border-bottom border-dark border-3">
+                  <h1>Date</h1>
+                  <img class="">*</img>
+                </div>
+                  <div class="card-title">
+                    <img class="">*</img>
+                    <div class="">Temp: 63.55</div>
+                    <div>wind: 5 MPH</div>
+                    <div>Humidity 20%</div>
+                </div>
+              </div>
+
+              <div id="cards" class="card bg-light w-auto p-3 me-3 border border-dark border-5">
                 <div class="card-header border-bottom border-dark border-3">
                   <h1>Date</h1>
                   <img class="">*</img>
