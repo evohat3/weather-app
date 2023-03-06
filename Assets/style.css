@@ -42,3 +42,15 @@
 #cityBox {
   display: none;
 }
+
+#aBTN:hover {
+  background-color: red;
+}
+
+#Btn:hover {
+  background-color: red;
+}
+
+#clearBtn:hover {
+  background-color: green;
+}

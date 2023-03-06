@@ -6,7 +6,7 @@ var maxCities = 5;
 
 // ********** TIME HEADER **********
 setInterval(function() {
-    $('#curTmDt').text(dayjs().format(' MMMM D, YYYY h:mm:ss A '));
+    $('#curTmDt').text(dayjs().format(' MMMM D, YYYY h:mm A '));
 }, 1000);
 // ********** TIME HEADER **********
 
@@ -79,7 +79,8 @@ $(document).ready(function() {
     var button = $('<button>').attr('type', 'button')
                                .addClass('btn btn-success border border-dark border-5 m-3 text-light')
                                .text(city)
-                               .attr('data-city', city);
+                               .attr('data-city', city)
+                               .attr('id', 'aBTN' )
     $('#ctyHist').append(button);
   });
 });
