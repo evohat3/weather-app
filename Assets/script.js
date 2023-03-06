@@ -2,7 +2,7 @@ var apKey = '5a62f4bb8b9b5dc5803e1dc31e408686'
 var city = ''
 var qUrl = ''
 var counter = 0;
-var maxCities = 10;
+var maxCities = 5;
 
 // ********** TIME HEADER **********
 setInterval(function() {
@@ -76,7 +76,7 @@ $(document).ready(function() {
   $.each(keys, function(index, key) {
     var city = localStorage.getItem(key)
     var button = $('<button>').attr('type', 'button')
-                               .addClass('btn btn-info border border-warning border-2')
+                               .addClass('btn btn-info border border-warning border-2 m-3')
                                .text(city)
                                .attr('data-city', city);
     $('#ctyHist').append(button);
