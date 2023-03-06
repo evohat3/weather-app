@@ -1,6 +1,8 @@
 var apKey = '5a62f4bb8b9b5dc5803e1dc31e408686'
 var city = ''
 var qUrl = ''
+var counter = 0;
+var maxCities = 5;
 
 // ********** TIME HEADER **********
 setInterval(function() {
@@ -22,24 +24,21 @@ $('#Btn').click(function() {
         throw new Error('Network response was not ok');
     })
     .then(data => {
+      //saves the city in local, with a unique key
+      var key = 'city_' + counter++;
+
+      localStorage.setItem(key, data.name);
+      // ******************************************
       $('#ctyDte').text('CITY: ' + data.name);
       $('#temp').text(data.main.temp + ' °F');
       $('#wicon').attr('src', 'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
       $('#desc').text(data.weather[0].description + ' Feels like: ' + data.main.feels_like)
       $('#wind').text(data.wind.speed + ' MPH');
       $('#humidity').text(data.main.humidity + '%');
-// can this be saved in local storage and then retrieved?
-/*
-      var button = $('<button>').attr('type', 'button')
-                                 .addClass('btn btn-info border border-warning border-2')
-                                 .text(data.name)
-                                 .attr('data-city', data.name);
-      $('#ctyHist').append(button);
 
-*/
-
-      localStorage.setItem('index', data.name);
+      // **** API TEST ****
       console.log(data);
+      // **** API TEST ****
     })
     .catch(error => {
       console.error('There was a problem with the network request:', error);
@@ -47,17 +46,30 @@ $('#Btn').click(function() {
     });
 });
 
-
+ // Gets all the keys in local storage and sorts them by their var = counter value
 $(document).ready(function() {
-  // Get all the keys in local storage
   var keys = Object.keys(localStorage);
+    keys.sort(function(a, b) {
+      return a.split('_')[1] - b.split('_')[1];
+    });
+  // Gets all the keys in local storage and sorts them by their var = counter value 
+    
   
-  // Loop through the keys and create a button for each city
+    if (keys.length > maxCities) {
+        var numToRemove = keys.length - maxCities;
+            for(var i = 0; i < numToRemove; i++) {
+                localStorage.removeItem(keys[i]);
+        }
+    }
+
+
+  // Loops through the stored keys and create a button for each city
   $.each(keys, function(index, key) {
+    var city = localStorage.getItem(key)
     var button = $('<button>').attr('type', 'button')
                                .addClass('btn btn-info border border-warning border-2')
-                               .text(localStorage.getItem(key))
-                               .attr('data-city', key);
+                               .text(city)
+                               .attr('data-city', city);
     $('#ctyHist').append(button);
   });
 });
@@ -74,3 +86,14 @@ $(document).ready(function() {
 })
 
 */
+
+function isCityAlreadyStored(cityName) {
+  var keys = Object.keys(localStorage);
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    if (localStorage.getItem(key) === cityName) {
+      return true;
+    }
+  }
+  return false;
+}
