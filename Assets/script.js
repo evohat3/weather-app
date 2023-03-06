@@ -39,7 +39,11 @@ $('#Btn').click(function() {
       $('#currentTCard').show();
       $('#fiveDaFor').show();
       $('#cityText').show();
+      $('#curWeatherBx').show();
       //*** shows weather card info ***
+
+      
+      // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
       
       // **** API TEST ****
       console.log(data);
