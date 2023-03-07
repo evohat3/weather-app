@@ -21,6 +21,9 @@ setInterval(function() {
 }, 1000);
 // ********** TIME HEADER **********
 
+
+
+// TODO when search button is clicked, point viewport to current weather
 // ********** SEARCH & SAVE BUTTON **********
 $('#Btn').click(function() {
   currentDate = dayjs().format('MMMM D, YYYY');
@@ -165,7 +168,7 @@ $('#clearBtn').click(function() {
   location.reload();
 });
 
-
+// TODO Make a click function that will show the current weather for the selected city button
 // ****** CODE FOR THE SAVED CITIES BUTTONS *******
 $(document).ready(function(){
   $("#aBTN[data-city='San Antonio']").click(function(){
