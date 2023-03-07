@@ -5,13 +5,19 @@ var qUrl2 = ''
 var counter = 0;
 var maxCities = 5;
 
+let forecastData, cardIndex, i,
+ dateString, date, options,
+  frmtDate, weather, icon, temp,
+   wind, humidity;
+
+
 
 
 
 
 // ********** TIME HEADER **********
 setInterval(function() {
-    $('#curTmDt').text(dayjs().format(' MMMM D, YYYY h:mm:s A '));
+    $('#curTmDt').text(dayjs().format(' MMMM D, YYYY h:mm A '));
 }, 1000);
 // ********** TIME HEADER **********
 
@@ -33,7 +39,7 @@ $('#Btn').click(function() {
       var key = 'city_' + counter++;
       localStorage.setItem(key, data.name);
       // ******************************************
-      $('#ctyDte').text('CITY: ' + '' + data.name + '' + currentDate) ;
+      $('#ctyDte').text('CITY: ' + ' ' + data.name + ' ' + currentDate) ;
       $('#temp').text(data.main.temp + ' °F');
       $('#wicon').attr('src', 'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
       $('#desc').text(data.weather[0].description + ' Feels like: ' + data.main.feels_like)
@@ -64,12 +70,17 @@ $('#Btn').click(function() {
       
           for (var cardIndex = 1; cardIndex <= 5; cardIndex++) {
             var i = (cardIndex - 1) * 8;
-            var date = forecastData.list[i].dt_txt;
+            var dateString = forecastData.list[i].dt_txt; // assuming i is the index of the current forecast item
+            var date = new Date(dateString);
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            var frmtDate = date.toLocaleDateString('en-US', options);
             var weather = forecastData.list[i].weather[0].description;
             var icon = forecastData.list[i].weather[0].icon;
             var temp = forecastData.list[i].main.temp; 
             var wind = forecastData.list[i].wind.speed;
             var humidity = forecastData.list[i].main.humidity; 
+
+
 
             // console.log(date)
             // console.log(weather)
@@ -79,7 +90,7 @@ $('#Btn').click(function() {
             // console.log(humidity)
 
 
-            $(`#card${cardIndex} .card-date`).html(date);
+            $(`#card${cardIndex} .card-date`).html(frmtDate);
             $(`#card${cardIndex} .feelsLike`).text(weather);
             $(`#card${cardIndex} .card-img`).attr('src', `https://openweathermap.org/img/w/${icon}.png`);
             $(`#card${cardIndex} .card-temp`).text(Math.round(temp) + '°F' );
@@ -88,13 +99,13 @@ $('#Btn').click(function() {
 
             //$(`#card${cardIndex} .card-img`).attr("src", getWeatherIconURL(weather));
 
-            console.log("Date: " + date + " Weather: " + weather);
+            // console.log("Date: " + date + " Weather: " + weather);
           }
           
 
           // every 24 hours interval in utc is in 8 object increments
           // - for loop to itterate through every 8 objects?
-          console.log(forecastData)
+          // console.log(forecastData)
         })
         .catch(error => {
           console.error('Error fetching forecast data:', error);
@@ -120,16 +131,12 @@ $(document).ready(function() {
       return a.split('_')[1] - b.split('_')[1];
     });
   // Gets all the keys in local storage and sorts them by their var = counter value 
-    
-  
     if (keys.length > maxCities) {
         var numToRemove = keys.length - maxCities;
             for(var i = 0; i < numToRemove; i++) {
                 localStorage.removeItem(keys[i]);
         }
     }
-
-
   // Loops through the stored keys and create a button for each city
   $.each(keys, function(index, key) {
     var city = localStorage.getItem(key)
@@ -156,4 +163,12 @@ function isCityAlreadyStored(cityName) {
 $('#clearBtn').click(function() {
   localStorage.clear();
   location.reload();
+});
+
+
+// ****** CODE FOR THE SAVED CITIES BUTTONS *******
+$(document).ready(function(){
+  $("#aBTN[data-city='San Antonio']").click(function(){
+    // your code here
+  });
 });
