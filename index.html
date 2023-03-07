@@ -1,66 +1,3 @@
-
- <!--
-
-TODO    make out a basic structure 
-
-*******************************************
-DONE ****** DASHBOARD CONTAINER ******
-    
-    - <nav>    
-    - <h1>Weather Dashboard</h1> 
-    - <a> timer <a>
-    - </nav> 
-*******************************************
-TODO  ****** SEARCH FOR CITY ******
-    
-    - div container for city search
-    - <h1> for Search for a City:
-    - input textbox for city
-    - search button
-*******************************************
-TODO  ****** DIV BOX OF APPENDING ******
-
-    - div container that appends buttons for each city
-    - div to append buttons to
-*******************************************
-TODO ****** CITY SELECTION BOX *******
-        
-    - main div box
-    - h1 city#  #mm/dd/yyy h1
-    - h3 temp . farenheit h3
-    - h3 wind . speed h3
-    - h3 humiditiy . percent
-*******************************************
-TODO ****** 5 DAY FORECAST: ******
-        - div container
-        - h2 5-day forecast: h2
-        - div date 1
-            -temp
-            -wind
-            -humidity
-        - div date 2
-            -temp
-            -wind
-            -humidity        
-        - div date 3
-            -temp
-            -wind
-            -humidity        
-        - div date 4
-            -temp
-            -wind
-            -humidity        
-        - div date 5
-            -temp
-            -wind
-            -humidity
-
--->
-
-    
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,9 +48,8 @@ TODO ****** 5 DAY FORECAST: ******
               <div class="input-group">
                 <input id="cityInpt" class="form-control border border-dark border-3 p-3 m-1 " type="text" placeholder="Search For A City">
                   <div class="container">
-                    <button id="Btn" type="button" class="btn btn-primary m-1 p-1 w-75 border border-3 border-dark">Search</button>
+                    <button href="#fiveDaFor" id="Btn" type="button" class="btn btn-primary m-1 p-1 w-75 border border-3 border-dark">Search</button>
                   </div>
-              
               </div>
             </form>
           </div>
@@ -172,7 +108,7 @@ TODO ****** 5 DAY FORECAST: ******
 
           <!-- Five day forecast -->
           <div id="fiveDaFor" class="card-header border border-light border-4 w-100">
-            <h2 class="text-white text-center">5-Day Forecast:</h2>
+            <h2 class="text-white text-center bg-success">5-Day Forecast:</h2>
             <div id="forecast" class="row cols-5 g-3  w-100">
 
               <div id="cards" class="card p-3 w-auto me-3 border border-dark border-5">
