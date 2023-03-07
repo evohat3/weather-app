@@ -62,11 +62,12 @@ $('#Btn').click(function() {
         })
         .then(forecastData => {
       
-          for (var i = 0; i < forecastData.list.length; i += 8) {
+          for (var cardIndex = 1; cardIndex <= 5; cardIndex++) {
+            var i = (cardIndex - 1) * 8;
             var date = forecastData.list[i].dt_txt;
             var weather = forecastData.list[i].weather[0].description;
             var icon = forecastData.list[i].weather[0].icon;
-            var cardIndex = i / 8 + 1;
+            
 
 
             $(`#card${cardIndex} .card-date`).html(date);
