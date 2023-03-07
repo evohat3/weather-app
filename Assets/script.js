@@ -1,8 +1,13 @@
 var apKey = '5a62f4bb8b9b5dc5803e1dc31e408686'
 var city = ''
 var qUrl = ''
+var qUrl2 = ''
 var counter = 0;
 var maxCities = 5;
+
+
+
+
 
 // ********** TIME HEADER **********
 setInterval(function() {
@@ -28,7 +33,7 @@ $('#Btn').click(function() {
       var key = 'city_' + counter++;
       localStorage.setItem(key, data.name);
       // ******************************************
-      $('#ctyDte').text('CITY: ' + '' + data.name);
+      $('#ctyDte').text('CITY: ' + '' + data.name + '' + currentDate) ;
       $('#temp').text(data.main.temp + ' °F');
       $('#wicon').attr('src', 'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
       $('#desc').text(data.weather[0].description + ' Feels like: ' + data.main.feels_like)
@@ -42,11 +47,52 @@ $('#Btn').click(function() {
       $('#cityBox').show();
       //*** shows weather card info ***
 
+
+    // ******* Starting Point For The Second API call ******
+      var lat = data.coord.lat;
+      var lon = data.coord.lon;
+      var qUrl2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apKey}&units=imperial`;
+
+      fetch(qUrl2)
+        .then(response => {
+            if(response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok');
+        })
+        .then(forecastData => {
+      
+          for (var i = 0; i < forecastData.list.length; i += 8) {
+            var date = forecastData.list[i].dt_txt;
+            var weather = forecastData.list[i].weather[0].description;
+            var icon = forecastData.list[i].weather[0].icon;
+            var cardIndex = i / 8 + 1;
+
+
+            $(`#card${cardIndex} .card-date`).html(date);
+            $(`#card${cardIndex} .feelsLike`).text(weather);
+            $(`#card${cardIndex} .card-img`).attr('src', `https://openweathermap.org/img/w/${icon}.png`);
+            
+            
+            //$(`#card${cardIndex} .card-img`).attr("src", getWeatherIconURL(weather));
+
+            console.log("Date: " + date + " Weather: " + weather);
+          }
+          
+
+          // every 24 hours interval in utc is in 8 object increments
+          // - for loop to itterate through every 8 objects?
+          console.log(forecastData)
+        })
+        .catch(error => {
+          console.error('Error fetching forecast data:', error);
+        });
       
       // qUrl2 = api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
       
       // **** API TEST ****
-      console.log(data);
+       console.log(data);
+       
       // **** API TEST ****
     })
     .catch(error => {
@@ -83,8 +129,6 @@ $(document).ready(function() {
     $('#ctyHist').append(button);
   });
 });
-
-
 
 function isCityAlreadyStored(cityName) {
   var keys = Object.keys(localStorage);
