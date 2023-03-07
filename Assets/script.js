@@ -67,14 +67,25 @@ $('#Btn').click(function() {
             var date = forecastData.list[i].dt_txt;
             var weather = forecastData.list[i].weather[0].description;
             var icon = forecastData.list[i].weather[0].icon;
-            
+            var temp = forecastData.list[i].main.temp; 
+            var wind = forecastData.list[i].wind.speed;
+            var humidity = forecastData.list[i].main.humidity; 
+
+            // console.log(date)
+            // console.log(weather)
+            // console.log(icon)
+            // console.log(temp)
+            // console.log(wind)
+            // console.log(humidity)
 
 
             $(`#card${cardIndex} .card-date`).html(date);
             $(`#card${cardIndex} .feelsLike`).text(weather);
             $(`#card${cardIndex} .card-img`).attr('src', `https://openweathermap.org/img/w/${icon}.png`);
-            
-            
+            $(`#card${cardIndex} .card-temp`).text(Math.round(temp) + '°F' );
+            $(`#card${cardIndex} .card-wind`).text('Wind: ' + Math.round(wind) + ' MPH')
+            $(`#card${cardIndex} .card-humidity`).text('Humidity: ' + humidity + '%')
+
             //$(`#card${cardIndex} .card-img`).attr("src", getWeatherIconURL(weather));
 
             console.log("Date: " + date + " Weather: " + weather);
