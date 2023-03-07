@@ -20,11 +20,11 @@
 
 -------------------
 # ScreenShots
-![Screenshot, The Search Section](./Assets/READMEscreenshots.jpg)
+![Screenshot, The Search Section](./Assets/IMGS/READMEscreenshots.jpg)
 
 -------------------------------------
-![Screenshot, The Current Weather](./Assets/READMEscreenshots1.jpg)
+![Screenshot, The Current Weather](./Assets/IMGS/READMEscreenshots1.jpg)
 
 ------------------------------------
 
-![Screenshot, The 5-day Forecast](./Assets/READMEscreenshots2.jpg)
+![Screenshot, The 5-day Forecast](./Assets/IMGS/READMEscreenshots2.jpg)
