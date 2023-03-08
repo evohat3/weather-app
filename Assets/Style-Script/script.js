@@ -11,6 +11,13 @@ let forecastData, cardIndex, i,
    wind, humidity;
 
 
+   $('#Btn').click(function() {
+    city = $('#cityInpt').val();
+    getCurWeather(city)
+    console.log(city)
+   });
+
+
 
 
 
@@ -25,9 +32,8 @@ setInterval(function() {
 
 // TODO when search button is clicked, point viewport to current weather
 // ********** SEARCH & SAVE BUTTON **********
-$('#Btn').click(function() {
+function getCurWeather() {
   currentDate = dayjs().format('MMMM D, YYYY');
-  city = $('#cityInpt').val();
   qUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apKey + '&units=imperial';    
 
   fetch(qUrl)
@@ -55,9 +61,7 @@ $('#Btn').click(function() {
       $('#curWeatherBx').show();
       $('#cityBox').show();
       //*** shows weather card info ***
-
-
-    // ******* Starting Point For The Second API call ******
+    // ******* Starting Point For The Second API call ******    
       var lat = data.coord.lat;
       var lon = data.coord.lon;
       var qUrl2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apKey}&units=imperial`;
@@ -83,15 +87,12 @@ $('#Btn').click(function() {
             var wind = forecastData.list[i].wind.speed;
             var humidity = forecastData.list[i].main.humidity; 
 
-
-
             // console.log(date)
             // console.log(weather)
             // console.log(icon)
             // console.log(temp)
             // console.log(wind)
             // console.log(humidity)
-
 
             $(`#card${cardIndex} .card-date`).html(frmtDate);
             $(`#card${cardIndex} .feelsLike`).text(weather);
@@ -104,7 +105,6 @@ $('#Btn').click(function() {
 
             // console.log("Date: " + date + " Weather: " + weather);
           }
-          
 
           // every 24 hours interval in utc is in 8 object increments
           // - for loop to itterate through every 8 objects?
@@ -125,10 +125,10 @@ $('#Btn').click(function() {
       console.error('There was a problem with the network request:', error);
       alert('There was a problem retrieving the weather data. Please try again later.');
     });
-});
+};
 
  // Gets all the keys in local storage and sorts them by their var = counter value
-$(document).ready(function() {
+ $(document).ready(function() {
   var keys = Object.keys(localStorage);
   keys.sort(function(a, b) {
       return a.split('_')[1] - b.split('_')[1];
@@ -142,13 +142,18 @@ $(document).ready(function() {
     }
   // Loops through the stored keys and create a button for each city
   $.each(keys, function(index, key) {
-    var city = localStorage.getItem(key)
+    var city = localStorage.getItem(key);
+    if (!isCityAlreadyStored(city)) {
+      localStorage.removeItem(keys[i]);
+    } else {
     var button = $('<button>').attr('type', 'button')
                                .addClass('btn btn-success border border-danger border-5 m-3')
                                .text(city)
                                .attr('data-city', city)
                                .attr('id', 'aBTN' )
     $('#ctyHist').append(button);
+  }
+    console.log(index)
   });
 });
 
@@ -166,12 +171,78 @@ function isCityAlreadyStored(cityName) {
 $('#clearBtn').click(function() {
   localStorage.clear();
   location.reload();
+
 });
 
 // TODO Make a click function that will show the current weather for the selected city button
 // ****** CODE FOR THE SAVED CITIES BUTTONS *******
-$(document).ready(function() {
-  $("#aBTN[data-city=['San Antonio']").click(function(){
 
-   });
- });
+  
+$('#ctyHist').on('click', 'button', function() {
+  var city = $(this).text();
+
+  currentDate = dayjs().format('MMMM D, YYYY');
+  qUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apKey + '&units=imperial';    
+
+  fetch(qUrl)
+    .then(response => {
+        if(response.ok) {
+          return response.json();
+        }
+        throw new Error('Network response was not ok');
+    })
+    .then(data => {
+
+      $('#ctyDte').text('CITY: ' + ' ' + data.name + ' ' + currentDate) ;
+      $('#temp').text(data.main.temp + ' °F');
+      $('#wicon').attr('src', 'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
+      $('#desc').text(data.weather[0].description + ' Feels like: ' + data.main.feels_like)
+      $('#wind').text(data.wind.speed + ' MPH');
+      $('#humidity').text(data.main.humidity + '%');
+      //*** shows weather card info ***
+      $('#currentTCard').show();
+      $('#fiveDaFor').show();
+      $('#cityText').show();
+      $('#curWeatherBx').show();
+      $('#cityBox').show();
+
+      var lat = data.coord.lat;
+      var lon = data.coord.lon;
+      var qUrl2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apKey}&units=imperial`;
+
+      fetch(qUrl2)
+        .then(response => {
+            if(response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok');
+        })
+        .then(forecastData => {
+      
+          for (var cardIndex = 1; cardIndex <= 5; cardIndex++) {
+            var i = (cardIndex - 1) * 8;
+            var dateString = forecastData.list[i].dt_txt;
+            var date = new Date(dateString);
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            var frmtDate = date.toLocaleDateString('en-US', options);
+            var weather = forecastData.list[i].weather[0].description;
+            var icon = forecastData.list[i].weather[0].icon;
+            var temp = forecastData.list[i].main.temp; 
+            var wind = forecastData.list[i].wind.speed;
+            var humidity = forecastData.list[i].main.humidity; 
+
+            $(`#card${cardIndex} .card-date`).html(frmtDate);
+            $(`#card${cardIndex} .feelsLike`).text(weather);
+            $(`#card${cardIndex} .card-img`).attr('src', `https://openweathermap.org/img/w/${icon}.png`);
+            $(`#card${cardIndex} .card-temp`).text(Math.round(temp) + '°F' );
+            $(`#card${cardIndex} .card-wind`).text('Wind: ' + Math.round(wind) + ' MPH')
+            $(`#card${cardIndex} .card-humidity`).text('Humidity: ' + humidity + '%')
+
+
+          };
+
+});
+
+})
+
+})
