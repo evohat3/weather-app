@@ -170,8 +170,8 @@ $('#clearBtn').click(function() {
 
 // TODO Make a click function that will show the current weather for the selected city button
 // ****** CODE FOR THE SAVED CITIES BUTTONS *******
-$(document).ready(function(){
-  $("#aBTN[data-city='San Antonio']").click(function(){
-    // your code here
-  });
-});
+$(document).ready(function() {
+  $("#aBTN[data-city=['San Antonio']").click(function(){
+
+   });
+ });
