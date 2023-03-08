@@ -58,6 +58,9 @@ $('#Btn').click(function() {
 
 
     // ******* Starting Point For The Second API call ******
+    
+
+    
       var lat = data.coord.lat;
       var lon = data.coord.lon;
       var qUrl2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apKey}&units=imperial`;
