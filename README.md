@@ -28,3 +28,9 @@
 ------------------------------------
 
 ![Screenshot, The 5-day Forecast](./Assets/IMGS/READMEscreenshots2.jpg)
+
+
+------------------------------------
+# thank you for visiting!
+
+- You can vist my portfolio [here!]("https://evohat3.github.io/Personal-Portfolio/")
