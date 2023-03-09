@@ -14,7 +14,7 @@ let forecastData, cardIndex, i,
    $('#Btn').click(function() {
     city = $('#cityInpt').val();
     getCurWeather(city)
-    console.log(city)
+    // console.log(city)
    });
 
 
@@ -77,7 +77,7 @@ function getCurWeather() {
       
           for (var cardIndex = 1; cardIndex <= 5; cardIndex++) {
             var i = (cardIndex - 1) * 8;
-            var dateString = forecastData.list[i].dt_txt; // assuming i is the index of the current forecast item
+            var dateString = forecastData.list[i].dt_txt; 
             var date = new Date(dateString);
             var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             var frmtDate = date.toLocaleDateString('en-US', options);
@@ -113,11 +113,8 @@ function getCurWeather() {
         .catch(error => {
           console.error('Error fetching forecast data:', error);
         });
-      
-      // qUrl2 = api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-      
       // **** API TEST ****
-       console.log(data);
+      //  console.log(data);
        
       // **** API TEST ****
     })
@@ -153,7 +150,7 @@ function getCurWeather() {
                                .attr('id', 'aBTN' )
     $('#ctyHist').append(button);
   }
-    console.log(index)
+    // console.log(index)
   });
 });
 
@@ -174,10 +171,7 @@ $('#clearBtn').click(function() {
 
 });
 
-// TODO Make a click function that will show the current weather for the selected city button
 // ****** CODE FOR THE SAVED CITIES BUTTONS *******
-
-  
 $('#ctyHist').on('click', 'button', function() {
   var city = $(this).text();
 
